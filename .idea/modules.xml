@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CryptexAPI.iml" filepath="$PROJECT_DIR$/.idea/CryptexAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CryptexAPI_Python.iml" filepath="$PROJECT_DIR$/.idea/CryptexAPI_Python.iml" />
     </modules>
   </component>
 </project>
