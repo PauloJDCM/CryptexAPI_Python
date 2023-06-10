@@ -4,14 +4,14 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship,
 
 uuid = Annotated[str, 36]
 username = Annotated[str, 25]
-solutionid = Annotated[str, 5]
+solution = Annotated[str, 35]
 
 
 class Base(MappedAsDataclass, DeclarativeBase):
     type_annotation_map = {
         uuid: String(36),
         username: String(25),
-        solutionid: String(5)
+        solution: String(35)
     }
 
 
@@ -30,7 +30,7 @@ class ActivePuzzle(Base):
 
     Id: Mapped[int] = mapped_column(primary_key=True)
     UserId = mapped_column(ForeignKey("Users.Id"))
-    Solution: Mapped[solutionid] = mapped_column(nullable=True)
+    Solution: Mapped[solution] = mapped_column(nullable=True)
 
 
 class Leaderboard(Base):
