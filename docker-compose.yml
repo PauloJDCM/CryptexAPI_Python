@@ -12,8 +12,7 @@ services:
   db:
     container_name: db
     image: postgres:latest
-    environment:
-      - POSTGRES_USER=CryptexAPI
-      - POSTGRES_PASSWORD=CryptexAPI
+    env_file:
+      - test.env
     ports:
       - 8001:5432
