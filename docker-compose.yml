@@ -1,26 +1,19 @@
+name: pythoncryptex
+
 services:
   api:
-    container_name: cryptex-api-python
+    container_name: api
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 8000:80
-    networks:
-      - api
 
   db:
-    container_name: cryptex-db
+    container_name: db
     image: postgres:latest
-    restart: always
     environment:
       - POSTGRES_USER=CryptexAPI
       - POSTGRES_PASSWORD=CryptexAPI
     ports:
       - 8001:5432
-    networks:
-      - api
-
-networks:
-  api:
-    driver: bridge
