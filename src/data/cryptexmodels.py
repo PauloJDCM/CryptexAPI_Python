@@ -2,40 +2,40 @@ from typing_extensions import Annotated
 from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, MappedAsDataclass
 
-uuid = Annotated[str, 36]
-username = Annotated[str, 25]
-solution = Annotated[str, 35]
+uuid_type = Annotated[str, 36]
+username_type = Annotated[str, 25]
+solution_type = Annotated[str, 35]
 
 
 class Base(MappedAsDataclass, DeclarativeBase):
     type_annotation_map = {
-        uuid: String(36),
-        username: String(25),
-        solution: String(35)
+        uuid_type: String(36),
+        username_type: String(25),
+        solution_type: String(35)
     }
 
 
-class User(Base):
-    __tablename__ = "Users"
-
-    Id: Mapped[int] = mapped_column(primary_key=True)
-    ExternalId: Mapped[uuid]
-    Name: Mapped[username]
-    ActivePuzzle: Mapped["ActivePuzzle"] = relationship()
-    Score: Mapped["Leaderboard"] = relationship()
-
-
 class ActivePuzzle(Base):
-    __tablename__ = "ActivePuzzles"
+    __tablename__ = "active_puzzles"
 
-    Id: Mapped[int] = mapped_column(primary_key=True)
-    UserId = mapped_column(ForeignKey("Users.Id"))
-    Solution: Mapped[solution] = mapped_column(nullable=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id = mapped_column(ForeignKey("users.id"))
+    solution: Mapped[solution_type] = mapped_column(nullable=True)
 
 
 class Leaderboard(Base):
-    __tablename__ = "Leaderboard"
+    __tablename__ = "leaderboard"
 
-    Id: Mapped[int] = mapped_column(primary_key=True)
-    UserId = mapped_column(ForeignKey("Users.Id"))
-    Score: Mapped[int]
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id = mapped_column(ForeignKey("users.id"))
+    score: Mapped[int]
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    external_id: Mapped[uuid_type]
+    name: Mapped[username_type]
+    active_puzzle: Mapped[ActivePuzzle] = relationship()
+    score: Mapped[Leaderboard] = relationship()
