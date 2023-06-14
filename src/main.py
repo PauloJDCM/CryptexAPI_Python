@@ -1,8 +1,11 @@
-from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi import FastAPI
+from services.cryptexdb import CryptexDB
+
+load_dotenv("cryptexapi.env")
 
 app = FastAPI()
-load_dotenv("../cryptexapi.env")
+db = CryptexDB()
 
 
 @app.get("/")
