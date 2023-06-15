@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine, insert
+from sqlalchemy import create_engine, insert, update, select
 from data.cryptexmodels import Base, Player, PlayerStats
 
 
@@ -12,10 +12,47 @@ class CryptexDB:
 
     def register_player(self, external_id: str, name: str):
         with self._engine.connect() as conn:
-            user_stmt = insert(Player).values(external_id=external_id, name=name)
-            user_id = conn.execute(user_stmt).inserted_primary_key[0]
+            stmt = (
+                insert(Player)
+                .values(external_id=external_id, name=name)
+            )
+            new_player_id = conn.execute(stmt).inserted_primary_key[0]
 
-            stats_stmt = insert(PlayerStats).values(user_id=user_id, games_played=0, games_won=0, score=0)
-            conn.execute(stats_stmt)
+            stmt = (
+                insert(PlayerStats)
+                .values(player_id=new_player_id, games_played=0, games_won=0, score=0)
+            )
+            conn.execute(stmt)
+
+            conn.commit()
+
+    def player_won(self, player_id: int, points: int) -> int:
+        with self._engine.connect() as conn:
+            stats = conn.execute(
+                select(PlayerStats)
+                .where(PlayerStats.player_id == player_id)
+            ).first()[0]
+
+            stats.games_won += 1
+            stats.score += points
+
+            conn.commit()
+            return stats.score
+
+    def player_started_new_game(self, player_id: int, new_solution: str):
+        with self._engine.connect() as conn:
+            stmt = (
+                update(Player)
+                .where(Player.id == player_id)
+                .values(active_solution=new_solution)
+            )
+            conn.execute(stmt)
+
+            stmt = (
+                update(PlayerStats)
+                .where(PlayerStats.player_id == player_id)
+                .values(games_played=PlayerStats.games_played + 1)
+            )
+            conn.execute(stmt)
 
             conn.commit()

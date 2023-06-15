@@ -19,7 +19,7 @@ class PlayerStats(Base):
     __tablename__ = "player_stats"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id = mapped_column(ForeignKey("players.id"))
+    player_id = mapped_column(ForeignKey("players.id"))
     games_played: Mapped[int]
     games_won: Mapped[int]
     score: Mapped[int]
