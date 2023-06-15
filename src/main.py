@@ -16,3 +16,8 @@ async def root():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
+
+
+@app.post("/register")
+async def register_player(externalid: str, name: str):
+    db.register_player(external_id=externalid, name=name)

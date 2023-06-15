@@ -10,7 +10,7 @@ class CryptexDB:
             f"@db:5432/postgres", echo=True)
         Base.metadata.create_all(self._engine)
 
-    def register_user(self, external_id: str, name: str):
+    def register_player(self, external_id: str, name: str):
         with self._engine.connect() as conn:
             user_stmt = insert(Player).values(external_id=external_id, name=name)
             user_id = conn.execute(user_stmt).inserted_primary_key[0]
