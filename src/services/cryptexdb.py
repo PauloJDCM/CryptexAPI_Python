@@ -1,5 +1,7 @@
 import os
 from sqlalchemy import create_engine, insert, update, select
+from sqlalchemy.orm import Session
+
 from data.cryptexmodels import Base, Player, PlayerStats
 
 
@@ -26,9 +28,11 @@ class CryptexDB:
 
             conn.commit()
 
-    def player_won(self, player_id: int, points: int) -> int:
-        with self._engine.connect() as conn:
-            stats = conn.execute(
+    def player_won(self, external_id: str, points: int) -> int:
+        with Session(self._engine) as session:
+            player_id = self._get_player_id(session, external_id)
+
+            stats = session.execute(
                 select(PlayerStats)
                 .where(PlayerStats.player_id == player_id)
             ).first()[0]
@@ -36,23 +40,31 @@ class CryptexDB:
             stats.games_won += 1
             stats.score += points
 
-            conn.commit()
+            session.commit()
             return stats.score
 
-    def player_started_new_game(self, player_id: int, new_solution: str):
-        with self._engine.connect() as conn:
+    def player_started_new_game(self, external_id: str, new_solution: str):
+        with Session(self._engine) as session:
+            player_id = self._get_player_id(session, external_id)
+
             stmt = (
                 update(Player)
                 .where(Player.id == player_id)
                 .values(active_solution=new_solution)
             )
-            conn.execute(stmt)
+            session.execute(stmt)
 
             stmt = (
                 update(PlayerStats)
                 .where(PlayerStats.player_id == player_id)
                 .values(games_played=PlayerStats.games_played + 1)
             )
-            conn.execute(stmt)
+            session.execute(stmt)
 
-            conn.commit()
+            session.commit()
+
+    @staticmethod
+    def _get_player_id(session: Session, external_id: str) -> int:
+        stmt = select(Player.id).where(Player.external_id == external_id)
+
+        return session.execute(stmt).first()[0]

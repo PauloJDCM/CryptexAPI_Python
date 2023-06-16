@@ -1,0 +1,211 @@
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T105556.200.json
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T105554.200.json
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T104517.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T104345.500.txt
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T104343.200.json
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T101539.500.txt
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T101242.500.txt
+
+###
+
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095851.200.json
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095848.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095720.200.json
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095718.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095431.500.txt
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095429.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/1?externalid=test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095058.500.txt
+
+###
+
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-16T095051.200.json
+
+###
+
+POST http://127.0.0.1:8000/register?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-15T085548.200.json
+
+###
+
+POST http://127.0.0.1:8000/register/?externalid=test_id&name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-15T085312.200.json
+
+###
+
+GET http://127.0.0.1:8000/register/?external_id=test_id&name=test_name
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-15T085256.405.json
+
+###
+
+GET http://127.0.0.1:8000/register/?externalid=test_id&name=test_name
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-15T085238.405.json
+
+###
+
+GET http://127.0.0.1:8000/register?externalid=test_id&name=test_name
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-15T085130.405.json
+
+###
+

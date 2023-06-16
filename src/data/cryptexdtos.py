@@ -12,8 +12,8 @@ class DifficultyOptions(BaseModel):
 
 
 class Puzzle(BaseModel):
-    Descriptions: list[str]
     Puzzle: list[str]
+    Descriptions: list[str]
 
 
 class Difficulty(IntEnum):

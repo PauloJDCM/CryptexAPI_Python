@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 
-POST http://127.0.0.1:8000/register?externalid=test_id&name=test_name
+POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
 Accept: application/json
 
 ###
