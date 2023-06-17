@@ -7,7 +7,7 @@ Small project for learning Python while creating a Cryptex puzzle game using a m
 [Python 3.10](https://www.python.org/)<br/>
 [FastAPI](https://fastapi.tiangolo.com/)<br/>
 [PostgreSQL](https://www.postgresql.org/)<br/>
-[SQLAlchemy](https://www.sqlalchemy.org/)<br/>
+[peewee](https://docs.peewee-orm.com/)<br/>
 [Docker](https://www.docker.com/)<br/>
 
 ## Citations

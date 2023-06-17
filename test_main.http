@@ -10,7 +10,12 @@ Accept: application/json
 
 ###
 
-POST http://127.0.0.1:8000/players?externalid=test_id&name=test_name
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id/1
 Accept: application/json
 
 ###
