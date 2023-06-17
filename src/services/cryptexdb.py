@@ -2,7 +2,7 @@ import os
 from datetime import date
 from peewee import *
 
-from data.cryptexmodels import Base, Player, PlayerStats
+from data.cryptexdtos import PlayerActivePuzzle
 
 
 class CryptexDB:
@@ -38,8 +38,10 @@ class CryptexDB:
         puzzles_update.execute()
         stats_update.execute()
 
-            session.commit()
-            return stats.score
+    @staticmethod
+    def get_player_active_puzzle(external_id: str) -> PlayerActivePuzzle:
+        player_id = CryptexDB._get_player_id(external_id)
+        puzzle = ActivePuzzle.get(ActivePuzzle.player_id == player_id)
 
         return PlayerActivePuzzle(PlayerId=player_id, Solution=puzzle.solution, Points=puzzle.points,
                                   Tries=puzzle.tries)

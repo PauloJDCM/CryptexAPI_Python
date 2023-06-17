@@ -31,3 +31,10 @@ class Difficulty(IntEnum):
 
             case Difficulty.Hard:
                 return DifficultyOptions(ComplexityRange=[*range(0, 100)], Permutations=8, ScoreMultiplier=9)
+
+
+class PlayerActivePuzzle(BaseModel):
+    PlayerId: int
+    Solution: str
+    Points: int
+    Tries: int
