@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 from enum import IntEnum
 
@@ -9,11 +10,6 @@ class DifficultyOptions(BaseModel):
     ComplexityRange: list[int]
     Permutations: int
     ScoreMultiplier: int
-
-
-class Puzzle(BaseModel):
-    Puzzle: list[str]
-    Descriptions: list[str]
 
 
 class Difficulty(IntEnum):
@@ -35,6 +31,6 @@ class Difficulty(IntEnum):
 
 class PlayerActivePuzzle(BaseModel):
     PlayerId: int
-    Solution: str
+    Solution: Optional[str]
     Points: int
     Tries: int
