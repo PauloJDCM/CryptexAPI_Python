@@ -1,6 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 from enum import IntEnum
+from apiresponses import Puzzle
 
 
 class DifficultyOptions(BaseModel):
@@ -27,6 +28,11 @@ class Difficulty(IntEnum):
 
             case Difficulty.Hard:
                 return DifficultyOptions(ComplexityRange=[*range(0, 100)], Permutations=8, ScoreMultiplier=9)
+
+
+class GeneratedPuzzle(BaseModel):
+    Puzzle: Puzzle
+    Solution: str
 
 
 class PlayerActivePuzzle(BaseModel):

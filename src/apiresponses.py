@@ -5,8 +5,9 @@ class Puzzle(BaseModel):
     class Config:
         allow_mutation = False
 
-    Puzzle: list[str]
+    Puzzle: list[list[str]]
     Descriptions: list[str]
+    Points: int
 
 
 class CheckResult(BaseModel):

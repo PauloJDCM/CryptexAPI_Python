@@ -1,12 +1,14 @@
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
-from services.cryptexdb import CryptexDB
 from apiresponses import *
+from services.cryptexdb import CryptexDB
+from services.puzzlegenerator import PuzzleGenerator
 
 load_dotenv("cryptexapi.env")
 
 app = FastAPI()
 db = CryptexDB()
+puzzle_gen = PuzzleGenerator()
 
 
 @app.post("/players/{external_id}")
@@ -16,10 +18,10 @@ async def register_player(external_id: str, name: str):
 
 @app.get("/puzzles/{external_id}", response_model=Puzzle)
 async def generate_puzzle(external_id: str, difficulty: int):
-    test_puzzle = Puzzle(Puzzle=[], Descriptions=[])
+    generated = puzzle_gen.generate(difficulty)
 
-    db.player_started_new_game(external_id=external_id, new_solution="TEST", points=100)
-    return test_puzzle
+    db.player_started_new_game(external_id=external_id, new_solution=generated.Solution, points=generated.Puzzle.Points)
+    return generated.Puzzle
 
 
 @app.put("/puzzles/{external_id}", response_model=CheckResult)
