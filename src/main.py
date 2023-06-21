@@ -1,3 +1,4 @@
+from peewee import IntegrityError
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from apiresponses import *
@@ -13,7 +14,10 @@ puzzle_gen = PuzzleGenerator()
 
 @app.post("/players/{external_id}")
 async def register_player(external_id: str, name: str):
-    db.register_player(external_id=external_id, name=name)
+    try:
+        db.register_player(external_id=external_id, name=name)
+    except IntegrityError:
+        raise HTTPException(status_code=409, detail="ID already in use")
 
 
 @app.get("/puzzles/{external_id}", response_model=Puzzle)
