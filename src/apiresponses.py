@@ -1,3 +1,4 @@
+from datetime import date
 from pydantic import BaseModel
 
 
@@ -40,3 +41,11 @@ class PlayerStatistics(BaseModel):
     GamesPlayed: int
     GamesWon: int
     Score: int
+
+
+class PlayerInfo(BaseModel):
+    class Config:
+        allow_mutation = False
+
+    Name: str
+    DateJoined: date

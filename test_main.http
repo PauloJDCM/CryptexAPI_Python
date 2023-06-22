@@ -15,6 +15,11 @@ Accept: application/json
 
 ###
 
+GET http://127.0.0.1:8000/players/test_id/stats
+Accept: application/json
+
+###
+
 GET http://127.0.0.1:8000/players/test_id
 Accept: application/json
 

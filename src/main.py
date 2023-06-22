@@ -20,7 +20,15 @@ async def register_player(external_id: str, name: str):
         raise HTTPException(status_code=409, detail="ID already in use")
 
 
-@app.get("/players/{external_id}", response_model=PlayerStatistics)
+@app.get("/players/{external_id}", response_model=PlayerInfo)
+async def get_player_stats(external_id: str):
+    try:
+        return db.get_player_info(external_id)
+    except DoesNotExist:
+        raise HTTPException(status_code=404)
+
+
+@app.get("/players/{external_id}/stats", response_model=PlayerStatistics)
 async def get_player_stats(external_id: str):
     try:
         return db.get_player_stats(external_id)
@@ -33,7 +41,8 @@ async def generate_puzzle(external_id: str, difficulty: int):
     try:
         generated = puzzle_gen.generate(difficulty)
 
-        db.player_started_new_game(external_id=external_id, new_solution=generated.Solution, points=generated.Puzzle.Points)
+        db.player_started_new_game(external_id=external_id, new_solution=generated.Solution,
+                                   points=generated.Puzzle.Points)
         return generated.Puzzle
     except DoesNotExist:
         raise HTTPException(status_code=404)

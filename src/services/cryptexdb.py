@@ -1,7 +1,7 @@
 import os
 from datetime import date
 from peewee import *
-from apiresponses import LeaderboardEntry, Leaderboard, PlayerStatistics
+from apiresponses import LeaderboardEntry, Leaderboard, PlayerStatistics, PlayerInfo
 from data.cryptexdtos import PlayerActivePuzzle
 
 
@@ -58,6 +58,12 @@ class CryptexDB:
     @staticmethod
     def player_lost(player_id: int):
         ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.player_id == player_id).execute()
+
+    @staticmethod
+    def get_player_info(external_id: str) -> PlayerInfo:
+        info = Player.get(Player.external_id == external_id)
+        return PlayerInfo(Name=info.name, DateJoined=info.joined_date)
+
 
     @staticmethod
     def get_player_stats(external_id: str) -> PlayerStatistics:
