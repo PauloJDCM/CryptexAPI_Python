@@ -33,15 +33,7 @@ class Leaderboard(BaseModel):
     Entries: list[LeaderboardEntry] = []
 
 
-class PlayerStanding(BaseModel):
-    class Config:
-        allow_mutation = False
-
-    Score: int
-    FocusedLeaderboard: Leaderboard
-
-
-class PlayerStats(BaseModel):
+class PlayerStatistics(BaseModel):
     class Config:
         allow_mutation = False
 

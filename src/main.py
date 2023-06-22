@@ -20,6 +20,11 @@ async def register_player(external_id: str, name: str):
         raise HTTPException(status_code=409, detail="ID already in use")
 
 
+@app.get("/players/{external_id}", response_model=PlayerStatistics)
+async def get_player_stats(external_id: str):
+    return db.get_player_stats(external_id)
+
+
 @app.get("/puzzles/{external_id}", response_model=Puzzle)
 async def generate_puzzle(external_id: str, difficulty: int):
     generated = puzzle_gen.generate(difficulty)

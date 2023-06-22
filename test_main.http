@@ -10,7 +10,12 @@ Accept: application/json
 
 ###
 
-PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=GULA
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
 Accept: application/json
 
 ###
