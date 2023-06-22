@@ -1,4 +1,4 @@
-from peewee import IntegrityError
+from peewee import IntegrityError, DoesNotExist
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from apiresponses import *
@@ -22,20 +22,29 @@ async def register_player(external_id: str, name: str):
 
 @app.get("/players/{external_id}", response_model=PlayerStatistics)
 async def get_player_stats(external_id: str):
-    return db.get_player_stats(external_id)
+    try:
+        return db.get_player_stats(external_id)
+    except DoesNotExist:
+        raise HTTPException(status_code=404)
 
 
 @app.get("/puzzles/{external_id}", response_model=Puzzle)
 async def generate_puzzle(external_id: str, difficulty: int):
-    generated = puzzle_gen.generate(difficulty)
+    try:
+        generated = puzzle_gen.generate(difficulty)
 
-    db.player_started_new_game(external_id=external_id, new_solution=generated.Solution, points=generated.Puzzle.Points)
-    return generated.Puzzle
+        db.player_started_new_game(external_id=external_id, new_solution=generated.Solution, points=generated.Puzzle.Points)
+        return generated.Puzzle
+    except DoesNotExist:
+        raise HTTPException(status_code=404)
 
 
 @app.put("/puzzles/{external_id}", response_model=CheckResult)
 async def check_solution(external_id: str, solution: str):
-    active_puzzle = db.get_player_active_puzzle(external_id)
+    try:
+        active_puzzle = db.get_player_active_puzzle(external_id)
+    except DoesNotExist:
+        raise HTTPException(status_code=404)
 
     if active_puzzle.Solution is None:
         raise HTTPException(status_code=400, detail="Player has no active puzzles")

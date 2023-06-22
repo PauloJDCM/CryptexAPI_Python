@@ -1,0 +1,506 @@
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=GULA
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T084147.404.json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T084144.404.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T084135.404.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T083756.500.txt
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T083425.500.txt
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T083318.500.txt
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082843.500.txt
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082525.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=GULA
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082504.200.json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082336-3.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082336-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082336-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082336.200.json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082132.500.txt
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082132-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082132-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T082132.200.json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080833.500.txt
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080833-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080833-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080833.200.json
+
+###
+
+GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080513.500.txt
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080513-1.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080513.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-22T080512.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=CREEP
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224404-1.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224404.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224404.409.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=CREEP
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224402-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224402-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T224402.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=CREEP
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222921-1.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222921.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222921.500.txt
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=CREEP
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222917-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222917-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222917.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222642.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=CREEP
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222613.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222540-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222540-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T222540.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221702-2.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221702-1.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221702.200.json
+
+###
+
+PUT http://127.0.0.1:8000/puzzles/test_id?solution=TEST
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221527-1.200.json
+
+###
+
+GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221527.200.json
+
+###
+
+POST http://127.0.0.1:8000/players/test_id?name=test_name
+Accept: application/json
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-21T221526.200.json
+
+###
+
