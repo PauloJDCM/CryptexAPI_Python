@@ -3,7 +3,6 @@ import os
 import random
 import string
 from pydantic import BaseModel
-
 from apiresponses import Puzzle
 from data.cryptexdtos import GeneratedPuzzle, Difficulty, DifficultyOptions
 
@@ -60,7 +59,7 @@ class PuzzleGenerator:
         for char in word:
             seen_characters = [char]
 
-            for i in range(options.Permutations + 1):
+            for i in range(options.Permutations - 1):
                 new_char = char
                 while new_char in seen_characters:
                     new_char = random.sample(self.AllowedCharacters, 1)[0]
