@@ -60,9 +60,10 @@ class CryptexDB:
         ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.player_id == player_id).execute()
 
     @staticmethod
-    def get_all_players_info() -> list[PlayerInfo]:
+    def get_all_players_info() -> dict[str, PlayerInfo]:
         info = Player.select(Player.external_id, Player.name, Player.joined_date)
-        return [PlayerInfo(Id=x.external_id, Name=x.name, DateJoined=x.joined_date) for x in info]
+
+        return {x.external_id: PlayerInfo(Name=x.name, DateJoined=x.joined_date) for x in info}
 
     @staticmethod
     def get_player_info(external_id: str) -> PlayerInfo:
@@ -70,12 +71,12 @@ class CryptexDB:
         return PlayerInfo(Id=external_id, Name=info.name, DateJoined=info.joined_date)
 
     @staticmethod
-    def get_all_players_stats() -> list[PlayerStatistics]:
+    def get_all_players_stats() -> dict[str, PlayerStatistics]:
         stats = PlayerStats.select(Player.external_id, PlayerStats.games_played, PlayerStats.games_won,
                                    PlayerStats.score).join(Player).namedtuples()
 
-        return [PlayerStatistics(Id=x.external_id, GamesPlayed=x.games_played, GamesWon=x.games_won,
-                                 Score=x.score) for x in stats]
+        return {x.external_id: PlayerStatistics(GamesPlayed=x.games_played, GamesWon=x.games_won, Score=x.score) for x
+                in stats}
 
     @staticmethod
     def get_player_stats(external_id: str) -> PlayerStatistics:

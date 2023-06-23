@@ -20,7 +20,7 @@ async def register_player(external_id: str, name: str):
         raise HTTPException(status_code=409, detail="ID already in use")
 
 
-@app.get("/players", response_model=list[PlayerInfo])
+@app.get("/players", response_model=dict[str, PlayerInfo])
 async def get_all_players_info():
     return db.get_all_players_info()
 
@@ -34,7 +34,7 @@ async def get_player_info(external_id: str):
 
 
 # fastapi not accepting non-trailing slash path
-@app.get("/players/stats/", response_model=list[PlayerStatistics])
+@app.get("/players/stats/", response_model=dict[str, PlayerStatistics])
 async def get_all_players_stats():
     return db.get_all_players_stats()
 
