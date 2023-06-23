@@ -20,15 +20,26 @@ async def register_player(external_id: str, name: str):
         raise HTTPException(status_code=409, detail="ID already in use")
 
 
+@app.get("/players", response_model=list[PlayerInfo])
+async def get_all_players_info():
+    return db.get_all_players_info()
+
+
 @app.get("/players/{external_id}", response_model=PlayerInfo)
-async def get_player_stats(external_id: str):
+async def get_player_info(external_id: str):
     try:
         return db.get_player_info(external_id)
     except DoesNotExist:
         raise HTTPException(status_code=404)
 
 
-@app.get("/players/{external_id}/stats", response_model=PlayerStatistics)
+# fastapi not accepting non-trailing slash path
+@app.get("/players/stats/", response_model=list[PlayerStatistics])
+async def get_all_players_stats():
+    return db.get_all_players_stats()
+
+
+@app.get("/players/stats/{external_id}", response_model=PlayerStatistics)
 async def get_player_stats(external_id: str):
     try:
         return db.get_player_stats(external_id)
@@ -43,6 +54,7 @@ async def generate_puzzle(external_id: str, difficulty: int):
 
         db.player_started_new_game(external_id=external_id, new_solution=generated.Solution,
                                    points=generated.Puzzle.Points)
+
         return generated.Puzzle
     except DoesNotExist:
         raise HTTPException(status_code=404)

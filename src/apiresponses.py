@@ -38,6 +38,7 @@ class PlayerStatistics(BaseModel):
     class Config:
         allow_mutation = False
 
+    Id: str
     GamesPlayed: int
     GamesWon: int
     Score: int
@@ -47,5 +48,6 @@ class PlayerInfo(BaseModel):
     class Config:
         allow_mutation = False
 
+    Id: str
     Name: str
     DateJoined: date

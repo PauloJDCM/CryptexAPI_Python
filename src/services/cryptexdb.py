@@ -60,15 +60,28 @@ class CryptexDB:
         ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.player_id == player_id).execute()
 
     @staticmethod
+    def get_all_players_info() -> list[PlayerInfo]:
+        info = Player.select(Player.external_id, Player.name, Player.joined_date)
+        return [PlayerInfo(Id=x.external_id, Name=x.name, DateJoined=x.joined_date) for x in info]
+
+    @staticmethod
     def get_player_info(external_id: str) -> PlayerInfo:
         info = Player.get(Player.external_id == external_id)
-        return PlayerInfo(Name=info.name, DateJoined=info.joined_date)
+        return PlayerInfo(Id=external_id, Name=info.name, DateJoined=info.joined_date)
 
+    @staticmethod
+    def get_all_players_stats() -> list[PlayerStatistics]:
+        stats = PlayerStats.select(Player.external_id, PlayerStats.games_played, PlayerStats.games_won,
+                                   PlayerStats.score).join(Player).namedtuples()
+
+        return [PlayerStatistics(Id=x.external_id, GamesPlayed=x.games_played, GamesWon=x.games_won,
+                                 Score=x.score) for x in stats]
 
     @staticmethod
     def get_player_stats(external_id: str) -> PlayerStatistics:
         stats = Player.get(Player.external_id == external_id).stats.get()
-        return PlayerStatistics(GamesPlayed=stats.games_played, GamesWon=stats.games_won, Score=stats.score)
+        return PlayerStatistics(Id=external_id, GamesPlayed=stats.games_played, GamesWon=stats.games_won,
+                                Score=stats.score)
 
     @staticmethod
     def get_leaderboard() -> Leaderboard:
@@ -96,10 +109,11 @@ class CryptexDB:
             top_half: list = [leaderboard[i] for i in range(max(0, pivot[0] - 5), pivot[0])]
             result.Entries.append(*(LeaderboardEntry(PlayerName=x[1], Score=x[2]) for x in top_half))
 
-        result.Entries.append(LeaderboardEntry(PlayerName=pivot[1], Score=pivot[2]))
+        result.Entries.append(LeaderboardEntry(PlayerName=pivot[1][1], Score=pivot[1][2]))
 
-        bottom_half: list = [leaderboard[i] for i in range(pivot[0] + 1, min(len(leaderboard), pivot[0] + 1 + 5))]
-        result.Entries.append(*(LeaderboardEntry(PlayerName=x[1], Score=x[2]) for x in bottom_half))
+        if pivot[0] < len(leaderboard):
+            bottom_half: list = [leaderboard[i] for i in range(pivot[0] + 1, min(len(leaderboard), pivot[0] + 1 + 5))]
+            result.Entries.append(*(LeaderboardEntry(PlayerName=x[1], Score=x[2]) for x in bottom_half))
 
         return result
 

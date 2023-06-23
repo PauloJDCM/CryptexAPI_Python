@@ -5,6 +5,11 @@ Accept: application/json
 
 ###
 
+POST http://127.0.0.1:8000/players/test_id2?name=test_name2
+Accept: application/json
+
+###
+
 GET http://127.0.0.1:8000/puzzles/test_id?difficulty=1
 Accept: application/json
 
@@ -15,12 +20,22 @@ Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8000/players/test_id/stats
+GET http://127.0.0.1:8000/players/stats/test_id
 Accept: application/json
 
 ###
 
 GET http://127.0.0.1:8000/players/test_id
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/players
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/players/stats/
 Accept: application/json
 
 ###
