@@ -58,6 +58,8 @@ async def generate_puzzle(external_id: str, difficulty: int):
         return generated.Puzzle
     except DoesNotExist:
         raise HTTPException(status_code=404)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Difficulty not valid! Only digits from 1 to 3 are allowed")
 
 
 @app.put("/puzzles/{external_id}", response_model=CheckResult)
@@ -72,7 +74,7 @@ async def check_solution(external_id: str, solution: str):
 
     active_puzzle.Tries -= 1
 
-    if active_puzzle.Solution == solution:
+    if active_puzzle.Solution == solution.upper():
         db.player_won(active_puzzle.PlayerId, active_puzzle.Points)
         return CheckResult(IsCorrect=True, TriesLeft=active_puzzle.Tries)
 
