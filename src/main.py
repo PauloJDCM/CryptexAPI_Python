@@ -82,3 +82,8 @@ async def check_solution(external_id: str, solution: str):
 
     db.player_lost(active_puzzle.PlayerId)
     return CheckResult(IsCorrect=False, TriesLeft=active_puzzle.Tries)
+
+
+@app.get("/leaderboard", response_model=dict[str, LeaderboardEntry])
+async def get_leaderboard():
+    return db.get_leaderboard()

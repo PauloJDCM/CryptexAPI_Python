@@ -23,15 +23,8 @@ class LeaderboardEntry(BaseModel):
     class Config:
         allow_mutation = False
 
-    PlayerName: str
+    Name: str
     Score: int
-
-
-class Leaderboard(BaseModel):
-    class Config:
-        allow_mutation = False
-
-    Entries: list[LeaderboardEntry] = []
 
 
 class PlayerStatistics(BaseModel):

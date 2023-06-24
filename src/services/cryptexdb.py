@@ -1,7 +1,7 @@
 import os
 from datetime import date
 from peewee import *
-from apiresponses import LeaderboardEntry, Leaderboard, PlayerStatistics, PlayerInfo
+from apiresponses import LeaderboardEntry, PlayerStatistics, PlayerInfo
 from data.cryptexdtos import PlayerActivePuzzle
 
 
@@ -85,38 +85,10 @@ class CryptexDB:
                                 Score=stats.score)
 
     @staticmethod
-    def get_leaderboard() -> Leaderboard:
-        result = Leaderboard()
-
-        leaderboard: list = PlayerStats.select(Player.name, PlayerStats.score).order_by(PlayerStats.score.desc())
-        result.Entries.append(*(LeaderboardEntry(PlayerName=x[0], Score=x[1]) for x in leaderboard))
-
-        return result
-
-    @staticmethod
-    def get_focused_leaderboard(external_id: str) -> Leaderboard:
-        player_id = CryptexDB._get_player_id(external_id)
-        result = Leaderboard()
-
-        leaderboard: list = PlayerStats.select(PlayerStats.player_id, Player.name, PlayerStats.score).order_by(
-            PlayerStats.score.desc())
-        pivot = [(i, x) for i, x in enumerate(leaderboard) if x[0] == player_id][0]
-
-        if len(leaderboard) < 2:
-            result.Entries.append(LeaderboardEntry(PlayerName=pivot[1], Score=pivot[2]))
-            return result
-
-        if pivot[0] > 0:
-            top_half: list = [leaderboard[i] for i in range(max(0, pivot[0] - 5), pivot[0])]
-            result.Entries.append(*(LeaderboardEntry(PlayerName=x[1], Score=x[2]) for x in top_half))
-
-        result.Entries.append(LeaderboardEntry(PlayerName=pivot[1][1], Score=pivot[1][2]))
-
-        if pivot[0] < len(leaderboard):
-            bottom_half: list = [leaderboard[i] for i in range(pivot[0] + 1, min(len(leaderboard), pivot[0] + 1 + 5))]
-            result.Entries.append(*(LeaderboardEntry(PlayerName=x[1], Score=x[2]) for x in bottom_half))
-
-        return result
+    def get_leaderboard() -> dict[str, LeaderboardEntry]:
+        leaderboard = Player.select(Player.external_id, Player.name, PlayerStats.score).join(PlayerStats).order_by(
+            PlayerStats.score.desc()).namedtuples()
+        return {x.external_id: LeaderboardEntry(Name=x.name, Score=x.score) for x in leaderboard}
 
     @staticmethod
     def _get_player_id(external_id: str) -> int:
