@@ -109,7 +109,7 @@ class BaseModel(Model):
 class Player(BaseModel):
     id = IdentityField()
     external_id = CharField(36, index=True, unique=True)
-    name = CharField(50)
+    name = CharField(50, unique=True)
     joined_date = DateField(default=date.today())
 
 

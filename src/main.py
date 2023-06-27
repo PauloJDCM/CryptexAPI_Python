@@ -18,7 +18,7 @@ async def register_player(external_id: str, name: str):
     try:
         db.register_player(external_id=external_id, name=name)
     except IntegrityError:
-        raise HTTPException(status_code=409, detail="ID already in use")
+        raise HTTPException(status_code=409, detail="ID or name already in use")
 
 
 @app.get("/players", response_model=dict[str, PlayerInfo])
