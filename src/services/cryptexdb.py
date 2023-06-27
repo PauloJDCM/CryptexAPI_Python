@@ -1,6 +1,8 @@
 import os
 from datetime import date
+
 from peewee import *
+
 from apiresponses import LeaderboardEntry, PlayerStatistics, PlayerInfo
 from data.cryptexdtos import PlayerActivePuzzle
 
@@ -68,7 +70,7 @@ class CryptexDB:
     @staticmethod
     def get_player_info(external_id: str) -> PlayerInfo:
         info = Player.get(Player.external_id == external_id)
-        return PlayerInfo(Id=external_id, Name=info.name, DateJoined=info.joined_date)
+        return PlayerInfo(Name=info.name, DateJoined=info.joined_date)
 
     @staticmethod
     def get_all_players_stats() -> dict[str, PlayerStatistics]:
@@ -81,7 +83,7 @@ class CryptexDB:
     @staticmethod
     def get_player_stats(external_id: str) -> PlayerStatistics:
         stats = Player.get(Player.external_id == external_id).stats.get()
-        return PlayerStatistics(Id=external_id, GamesPlayed=stats.games_played, GamesWon=stats.games_won,
+        return PlayerStatistics(GamesPlayed=stats.games_played, GamesWon=stats.games_won,
                                 Score=stats.score)
 
     @staticmethod
@@ -89,6 +91,10 @@ class CryptexDB:
         leaderboard = Player.select(Player.external_id, Player.name, PlayerStats.score).join(PlayerStats).order_by(
             PlayerStats.score.desc()).namedtuples()
         return {x.external_id: LeaderboardEntry(Name=x.name, Score=x.score) for x in leaderboard}
+
+    @staticmethod
+    def delete_player(external_id: str):
+        Player.delete().where(Player.external_id == external_id)
 
     @staticmethod
     def _get_player_id(external_id: str) -> int:

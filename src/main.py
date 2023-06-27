@@ -1,6 +1,7 @@
-from peewee import IntegrityError, DoesNotExist
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
+from peewee import IntegrityError, DoesNotExist
+
 from apiresponses import *
 from services.cryptexdb import CryptexDB
 from services.puzzlegenerator import PuzzleGenerator
@@ -89,3 +90,8 @@ async def check_solution(external_id: str, solution: str):
 @app.get("/leaderboard", response_model=dict[str, LeaderboardEntry])
 async def get_leaderboard():
     return db.get_leaderboard()
+
+
+@app.delete("/players/{external_id}")
+async def remove_player(external_id: str):
+    db.delete_player(external_id)
