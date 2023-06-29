@@ -24,35 +24,35 @@ class CryptexDB:
     @staticmethod
     def register_player(player_id: str, name: str):
         player = Player.create(id=player_id, name=name)
-        PlayerStats.create(id=player_id, player=player)
-        ActivePuzzle.create(id=player_id, player=player)
+        PlayerStats.create(player_id=player)
+        ActivePuzzle.create(player_id=player)
 
     @staticmethod
     def player_started_new_game(player_id: str, new_solution: str, points: int):
         ActivePuzzle.update(solution=new_solution, points=points, tries=3).where(
-            ActivePuzzle.id == player_id).execute()
+            ActivePuzzle.player_id == player_id).execute()
 
         PlayerStats.update(games_played=PlayerStats.games_played + 1).where(
-            PlayerStats.id == player_id).execute()
+            PlayerStats.player_id == player_id).execute()
 
     @staticmethod
     def get_player_active_puzzle(player_id: str) -> PlayerActivePuzzle:
-        puzzle = ActivePuzzle.get(ActivePuzzle.id == player_id)
+        puzzle = ActivePuzzle.get(ActivePuzzle.player_id == player_id)
         return PlayerActivePuzzle(Solution=puzzle.solution, Points=puzzle.points, Tries=puzzle.tries)
 
     @staticmethod
     def player_won(player_id: str, points: int):
-        ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.id == player_id).execute()
+        ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.player_id == player_id).execute()
         PlayerStats.update(games_won=PlayerStats.games_won + 1, score=PlayerStats.score + points).where(
-            PlayerStats.id == player_id).execute()
+            PlayerStats.player_id == player_id).execute()
 
     @staticmethod
     def player_tries_again(player_id: str):
-        ActivePuzzle.update(tries=ActivePuzzle.tries - 1).where(ActivePuzzle.id == player_id).execute()
+        ActivePuzzle.update(tries=ActivePuzzle.tries - 1).where(ActivePuzzle.player_id == player_id).execute()
 
     @staticmethod
     def player_lost(player_id: str):
-        ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.id == player_id).execute()
+        ActivePuzzle.update(solution=None, points=0, tries=0).where(ActivePuzzle.player_id == player_id).execute()
 
     @staticmethod
     def get_all_players_info() -> dict[str, PlayerInfo]:
@@ -66,10 +66,10 @@ class CryptexDB:
 
     @staticmethod
     def get_all_players_stats() -> dict[str, PlayerStatistics]:
-        stats = PlayerStats.select(PlayerStats.id, PlayerStats.games_played, PlayerStats.games_won,
+        stats = PlayerStats.select(PlayerStats.player_id, PlayerStats.games_played, PlayerStats.games_won,
                                    PlayerStats.score).namedtuples()
 
-        return {x.id: PlayerStatistics(GamesPlayed=x.games_played, GamesWon=x.games_won, Score=x.score) for x
+        return {x.player_id: PlayerStatistics(GamesPlayed=x.games_played, GamesWon=x.games_won, Score=x.score) for x
                 in stats}
 
     @staticmethod
@@ -101,16 +101,14 @@ class Player(BaseModel):
 
 
 class ActivePuzzle(BaseModel):
-    id = CharField(36, primary_key=True)
+    player_id = ForeignKeyField(Player, index=True, primary_key=True, backref='active_puzzle', on_delete='CASCADE')
     solution = CharField(15, null=True)
     points = SmallIntegerField(default=0)
     tries = SmallIntegerField(default=0)
-    player = ForeignKeyField(Player, backref='active_puzzle', on_delete='CASCADE')
 
 
 class PlayerStats(BaseModel):
-    id = CharField(36, primary_key=True)
+    player_id = ForeignKeyField(Player, index=True, primary_key=True, backref='stats', on_delete='CASCADE')
     games_played = IntegerField(default=0)
     games_won = IntegerField(default=0)
     score = IntegerField(default=0)
-    player = ForeignKeyField(Player, backref='stats', on_delete='CASCADE')
