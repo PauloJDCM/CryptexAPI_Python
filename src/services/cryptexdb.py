@@ -94,7 +94,7 @@ class CryptexDB:
 
     @staticmethod
     def delete_player(external_id: str):
-        Player.delete().where(Player.external_id == external_id)
+        Player.delete().where(Player.external_id == external_id).execute()
 
     @staticmethod
     def _get_player_id(external_id: str) -> int:
@@ -115,7 +115,7 @@ class Player(BaseModel):
 
 class ActivePuzzle(BaseModel):
     id = IdentityField()
-    player_id = ForeignKeyField(Player, backref='active_puzzle', index=True)
+    player_id = ForeignKeyField(Player, backref='active_puzzle', on_delete='CASCADE', index=True)
     solution = CharField(15, null=True)
     points = SmallIntegerField(default=0)
     tries = SmallIntegerField(default=0)
@@ -123,7 +123,7 @@ class ActivePuzzle(BaseModel):
 
 class PlayerStats(BaseModel):
     id = IdentityField()
-    player_id = ForeignKeyField(Player, backref='stats', index=True)
+    player_id = ForeignKeyField(Player, backref='stats', on_delete='CASCADE', index=True)
     games_played = IntegerField(default=0)
     games_won = IntegerField(default=0)
     score = IntegerField(default=0)
