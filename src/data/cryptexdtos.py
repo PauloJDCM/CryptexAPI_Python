@@ -1,6 +1,8 @@
-from typing import Optional
-from pydantic import BaseModel
 from enum import IntEnum
+from typing import Optional
+
+from pydantic import BaseModel
+
 from apiresponses import Puzzle
 
 
@@ -36,7 +38,6 @@ class GeneratedPuzzle(BaseModel):
 
 
 class PlayerActivePuzzle(BaseModel):
-    PlayerId: int
     Solution: Optional[str]
     Points: int
     Tries: int
